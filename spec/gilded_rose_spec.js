@@ -67,8 +67,14 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(3);
     })
 
-    xit("Brie- should increase quality of Aged Brie by 2 as it gets older (<10days)", function() {
+    it("Brie- should increase quality of Aged Brie by 2 as it gets older (<10days)", function() {
       const gildedRose = new Shop([ new ItemDouble("Aged Brie", 9, 10) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(12);
+    })
+
+    it("Backstage passes - should increase quality by 2 below 10 days", function() {
+      const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 9, 10) ]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(12);
     })
