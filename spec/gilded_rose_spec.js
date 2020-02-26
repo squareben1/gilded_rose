@@ -49,5 +49,17 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(50);
     })
 
+    it("Sulfuras- should not lower Sellin value of Sulfuras", function() {
+      const gildedRose = new Shop([ new ItemDouble("Sulfuras, Hand of Ragnaros", 10, 80) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(10);
+    })
+
+    it("Sulfuras- should not lower Quality value of Sulfuras, should remain 80", function() {
+      const gildedRose = new Shop([ new ItemDouble("Sulfuras, Hand of Ragnaros", 10, 80) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(80);
+    })
+
   })
 });
