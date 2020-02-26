@@ -61,5 +61,17 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(80);
     })
 
+    it("Brie- should increase quality of Aged Brie by 1 as it gets older (>10days)", function() {
+      const gildedRose = new Shop([ new ItemDouble("Aged Brie", 15, 2) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(3);
+    })
+
+    xit("Brie- should increase quality of Aged Brie by 2 as it gets older (<10days)", function() {
+      const gildedRose = new Shop([ new ItemDouble("Aged Brie", 9, 10) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(12);
+    })
+
   })
 });
