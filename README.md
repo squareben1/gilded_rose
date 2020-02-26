@@ -2,9 +2,7 @@
 
 I have been asked by Allison, the propietor of a small, well situated hostelry, to update the inn's inventory management system. It's previous developer had a clear penchant for i/else statements and the code required a little re-organizing before I felt comfortable adding in the new functionality required. 
 
-In testing the existing code I found several 'existing' features which did not work correctly (or at all), and had to fix these before I could conitnue. Specifically, the value of Brie did not increase by 2 when sellIn went below 10 and did not increase by 3 when sellin went below 5. The value of brie also did not hit zero when sellin did. These were corrected before any refactoring took place. 
-
-This is the outline for the program when it reached me (after I made the repairs mentioned above):
+This is the outline for the program when it reached me:
 
 	- All items have a SellIn value which denotes the number of days we have to sell the item
 	- All items have a Quality value which denotes how valuable the item is
