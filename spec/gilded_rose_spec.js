@@ -37,5 +37,11 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(47);
     })
 
+    it("should not lower quality below 0", function() {
+      const gildedRose = new Shop([ new ItemDouble("potion", 0, 0) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    })
+
   })
 });
