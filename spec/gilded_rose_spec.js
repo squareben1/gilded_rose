@@ -73,10 +73,22 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(12);
     })
 
-    it("Backstage passes - should increase quality by 2 below 10 days", function() {
+    it("Brie- - should increase quality by 3 below 5 days", function() {
+      const gildedRose = new Shop([ new ItemDouble("Aged Brie", 4, 10) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(13);
+    })
+
+    it("Backstage passes- should increase quality by 2 below 10 days", function() {
       const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 9, 10) ]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(12);
+    })
+
+    it("Backstage passes- should increase quality by 3 below 5 days", function() {
+      const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 4, 10) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(13);
     })
 
   })
