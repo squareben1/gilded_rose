@@ -8,7 +8,7 @@ This is the outline for the program when it reached me:
 	- All items have a Quality value which denotes how valuable the item is
 	- At the end of each day our system lowers both values for every item
 
-More specifically: 
+More specifically:  
 	- Once the sell by date has passed, Quality degrades twice as fast  
 	- The Quality of an item is never negative  
 	- "Aged Brie" actually increases in Quality the older it gets  
