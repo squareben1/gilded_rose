@@ -11,7 +11,20 @@ class Shop {
     this.items = items;
   }
 
-  decreaseQuality(){
+  backstagePasses(i) {
+    if (this.items[i].sellIn < 11) {
+      if (this.items[i].quality < 50) {
+        this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 2 if sellIn <11
+      }
+    }
+    if (this.items[i].sellIn < 6) {
+      if (this.items[i].quality < 50) {
+        this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 3 if sellIn <6
+      }
+    }
+  }
+
+  updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
         if (this.items[i].quality > 0) {
@@ -23,25 +36,20 @@ class Shop {
         if (this.items[i].quality < 50) {
           this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 1
           if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') { //PASSES qality
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 2 if sellIn <11
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 3 if sellIn <6
-              }
-            }
+            this.backstagePasses(i)
+            // if (this.items[i].sellIn < 11) {
+            //   if (this.items[i].quality < 50) {
+            //     this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 2 if sellIn <11
+            //   }
+            // }
+            // if (this.items[i].sellIn < 6) {
+            //   if (this.items[i].quality < 50) {
+            //     this.items[i].quality = this.items[i].quality + 1; // increase QUALITY by 3 if sellIn <6
+            //   }
+            // }
           }
         }
       }
-    }
-  }
-
-  updateQuality() {
-    this.decreaseQuality()
-    for (var i = 0; i < this.items.length; i++) {      
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         this.items[i].sellIn = this.items[i].sellIn - 1; // DEcrease SELLIN by 1
       }
