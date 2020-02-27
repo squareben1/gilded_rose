@@ -29,6 +29,12 @@ class Shop {
     }
   }
 
+  brieQuality(i) {
+    if (this.items[i].quality < 50) {
+      this.items[i].quality = this.items[i].quality + 1; //Increase BRIE QUALITY +1 more (2) if SELLIN <0
+    }
+  }
+
   decreaseSellIn(i) {
     if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
       this.items[i].sellIn = this.items[i].sellIn - 1; // DECREASE SELLIN by 1
@@ -46,10 +52,8 @@ class Shop {
       } else { // if aged brie or passes
         this.specialQuality(i)
       }
-      this.decreaseSellIn(i)
-      // if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-      //   this.items[i].sellIn = this.items[i].sellIn - 1; // DECREASE SELLIN by 1
-      // }
+      this.decreaseSellIn(i) // DECREASE SELLIN by 1
+
       if (this.items[i].sellIn < 0) { // SELLIN passed 
         if (this.items[i].name != 'Aged Brie') {
           if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -62,9 +66,10 @@ class Shop {
             this.items[i].quality = this.items[i].quality - this.items[i].quality; //passes lose all quality if sellIn < 0
           }
         } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1; //Increase BRIE QUALITY +1 more (2) if SELLIN <0
-          }
+          this.brieQuality(i)
+          // if (this.items[i].quality < 50) {
+          //   this.items[i].quality = this.items[i].quality + 1; //Increase BRIE QUALITY +1 more (2) if SELLIN <0
+          // }
         }
       }
     }
