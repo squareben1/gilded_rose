@@ -1,5 +1,5 @@
 describe("Gilded Rose", function() {
-  describe("updateQuality", function() {
+  describe("updateItems", function() {
     function ItemDouble(name, sellIn, quality) {
       this.name = name;
       this.sellIn = sellIn;
@@ -42,5 +42,26 @@ describe("Gilded Rose", function() {
       gildedRose.updateItems();
       expect(items[0].quality).toEqual(46);
     })
+
+    it("should not lower quality below 0", function() {
+      const gildedRose = new Shop([ new ItemDouble("potion", 0, 0) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(0);
+    })
+
+    it("Brie- should increase quality of Aged Brie by 1 when sellIn > 0", function() {
+      const gildedRose = new Shop([ new ItemDouble("Aged Brie", 15, 2) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(3);
+    })
+
+    it("should not increase quality of an item beyond 50", function() {
+      const gildedRose = new Shop([ new ItemDouble("Aged Brie", 2, 50) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(50);
+    })
+
+    
+
   })
 })

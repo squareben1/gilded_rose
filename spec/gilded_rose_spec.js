@@ -61,7 +61,7 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(80);
     })
 
-    it("Brie- should increase quality of Aged Brie by 1 above 10days", function() {
+    it("Brie- should increase quality of Aged Brie by 1 when sellIn > 0", function() {
       const gildedRose = new Shop([ new ItemDouble("Aged Brie", 15, 2) ]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(3);
