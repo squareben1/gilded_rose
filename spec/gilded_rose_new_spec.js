@@ -26,5 +26,21 @@ describe("Gilded Rose", function() {
       expect(items[0].sellIn).toEqual(0);
       expect(items[1].sellIn).toEqual(0);
     })
+
+    it("should degrade quality twice as fast after sellBy passed", function() {
+      const gildedRose = new Shop([ new ItemDouble("potion", 1, 50) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(49);
+      gildedRose.updateItems();
+      expect(items[0].quality).toEqual(47);
+    })
+
+    it("should degrade quality twice as fast if conjured item", function() {
+      const gildedRose = new Shop([ new ItemDouble("Conjured Mana Cake", 10, 50) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(48);
+      gildedRose.updateItems();
+      expect(items[0].quality).toEqual(46);
+    })
   })
 })

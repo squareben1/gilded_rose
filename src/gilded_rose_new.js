@@ -34,7 +34,12 @@ class Shop {
   updateItems() {
     for (var i = 0; i < this.items.length; i++) {
       this.decreaseSellIn(i)
-      this.decreaseQuality(i, 1)
+      if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
+        this.decreaseQuality(i, 2)
+      } else {
+        this.decreaseQuality(i, 1)
+      }
+        
     }
     return this.items;
   }
