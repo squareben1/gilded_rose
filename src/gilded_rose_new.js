@@ -35,6 +35,14 @@ class Shop {
     }
   }
 
+  agedBrie(i) {
+    if (this.items[i].sellIn < 0) {
+      this.increaseQuality(i, 2)
+    } else {
+      this.increaseQuality(i, 1)
+    }
+  }
+
   increaseQuality(i, num) {
     if (this.items[i].quality < 50) {
       this.items[i].quality = this.items[i].quality + num;
@@ -47,11 +55,7 @@ class Shop {
       if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
         this.backstagePasses(i)
       } else if (this.items[i].name == "Aged Brie") {
-        if (this.items[i].sellIn < 0) {
-          this.increaseQuality(i, 2)
-        } else {
-          this.increaseQuality(i, 1)
-        }
+        this.agedBrie(i)
       } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
         this.decreaseQuality(i, 2)
       } else {
