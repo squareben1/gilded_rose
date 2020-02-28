@@ -15,13 +15,25 @@ class Shop {
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
-  }
+  };
 
   decreaseQuality(i, num) {
       if (this.items[i].quality > 0 && this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-          this.items[i].quality = this.items[i].quality - num;
+          if (this.items[i].quality - num < 0) {
+            this.items[i].quality = 0
+          } else {
+            this.items[i].quality = this.items[i].quality - num;
+          }
       }
-  }
+  };
+
+  increaseQuality(i, num) {
+    if (this.items[i].quality + num >= 50) {
+     this.items[i].quality = 50
+    } else {
+     this.items[i].quality = this.items[i].quality + num
+    }
+};
 
   backstagePasses(i) {
     if (this.items[i].sellIn < 0) {
@@ -33,7 +45,7 @@ class Shop {
     } else {
       this.increaseQuality(i, 1)
     }
-  }
+  };
 
   agedBrie(i) {
     if (this.items[i].sellIn < 0) {
@@ -41,17 +53,7 @@ class Shop {
     } else {
       this.increaseQuality(i, 1)
     }
-  }
-
-  increaseQuality(i, num) {
-    // if (this.items[i].quality <= 50) {
-       if (this.items[i].quality + num >= 50) {
-        this.items[i].quality = 50
-       } else {
-        this.items[i].quality = this.items[i].quality + num
-       }
-    // }
-  }
+  };
 
   updateItems() {
     for (var i = 0; i < this.items.length; i++) {
@@ -60,12 +62,12 @@ class Shop {
         this.backstagePasses(i)
       } else if (this.items[i].name == "Aged Brie") {
         this.agedBrie(i)
-      } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) { // make a list of words here
+      } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
         this.decreaseQuality(i, 2)
       } else {
         this.decreaseQuality(i, 1)
       }
     }
     return this.items;
-  }
-}
+  };
+};
