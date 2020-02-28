@@ -18,10 +18,8 @@ class Shop {
   }
 
   decreaseQuality(i, num) {
-      if (this.items[i].quality > 0) {
-        if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+      if (this.items[i].quality > 0 && this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
           this.items[i].quality = this.items[i].quality - num;
-        }
       }
   }
 
@@ -35,9 +33,12 @@ class Shop {
     for (var i = 0; i < this.items.length; i++) {
       this.decreaseSellIn(i)
       if (this.items[i].name == "Aged Brie") {
-        this.increaseQuality(i, 1)
-      }
-      else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
+        if (this.items[i].sellIn < 0) {
+          this.increaseQuality(i, 2)
+        } else {
+          this.increaseQuality(i, 1)
+        }
+      } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
         this.decreaseQuality(i, 2)
       } else {
         this.decreaseQuality(i, 1)

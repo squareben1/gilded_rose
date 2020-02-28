@@ -55,13 +55,19 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(3);
     })
 
+    it("Brie- should increase quality of Aged Brie by 2 when sellIn < 0", function() {
+      const gildedRose = new Shop([ new ItemDouble("Aged Brie", 0, 2) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(4);
+    })
+
     it("should not increase quality of an item beyond 50", function() {
       const gildedRose = new Shop([ new ItemDouble("Aged Brie", 2, 50) ]);
       const items = gildedRose.updateItems();
       expect(items[0].quality).toEqual(50);
     })
 
-    
+
 
   })
 })
