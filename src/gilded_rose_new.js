@@ -24,7 +24,7 @@ class Shop {
   }
 
   backstagePasses(i) {
-    if (this.items[i].sellIn <= 0) {
+    if (this.items[i].sellIn < 0) {
       this.decreaseQuality(i, this.items[i].quality)
     } else if (this.items[i].sellIn < 5) {
       this.increaseQuality(i, 3)
@@ -44,9 +44,13 @@ class Shop {
   }
 
   increaseQuality(i, num) {
-    if (this.items[i].quality < 50) {
-      this.items[i].quality = this.items[i].quality + num;
-    }
+    // if (this.items[i].quality <= 50) {
+       if (this.items[i].quality + num >= 50) {
+        this.items[i].quality = 50
+       } else {
+        this.items[i].quality = this.items[i].quality + num
+       }
+    // }
   }
 
   updateItems() {
@@ -56,7 +60,7 @@ class Shop {
         this.backstagePasses(i)
       } else if (this.items[i].name == "Aged Brie") {
         this.agedBrie(i)
-      } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
+      } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) { // make a list of words here
         this.decreaseQuality(i, 2)
       } else {
         this.decreaseQuality(i, 1)

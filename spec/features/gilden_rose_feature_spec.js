@@ -32,7 +32,7 @@ Backstage passes to a TAFKAL80ETC concert, 5, 49\n`
     items.forEach(element => {
       actualResult = actualResult + (element.name + ', ' + element.sellIn + ', ' + element.quality +"\n");
     });
-    gildedRose.updateQuality()
+    gildedRose.updateItems()
     }
     expect(actualResult).toEqual(result)
   })
@@ -83,7 +83,7 @@ Backstage passes to a TAFKAL80ETC concert, 4, 50
       actualResult = actualResult + (element.name + ', ' + element.sellIn + ', ' + element.quality + "\n");
     });
     actualResult = actualResult + "\n"
-    gildedRose.updateQuality()
+    gildedRose.updateItems()
     }
     expect(actualResult).toEqual(result)
   })
@@ -453,8 +453,9 @@ Backstage passes to a TAFKAL80ETC concert, -25, 0
       actualResult = actualResult + (element.name + ', ' + element.sellIn + ', ' + element.quality + "\n");
     });
     actualResult = actualResult + "\n"
-    gildedRose.updateQuality()
+    gildedRose.updateItems()
     }
+    console.log(actualResult)
     expect(actualResult).toEqual(result)
   })
 })
