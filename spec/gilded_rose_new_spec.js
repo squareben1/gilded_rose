@@ -79,5 +79,29 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(80);
     })
 
+    it("Backstage passes- should increase quality of passes by 1 above 10days", function() {
+      const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 15, 10) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(11);
+    })
+
+    it("Backstage passes- should increase quality by 2 below 10 days", function() {
+      const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 9, 10) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(12);
+    })
+
+    it("Backstage passes- should increase quality by 3 below 5 days", function() {
+      const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 4, 10) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(13);
+    })
+
+    it("quality of passes drops to 0 after sellIn passes", function() {
+      const gildedRose = new Shop([ new ItemDouble("Backstage passes to a TAFKAL80ETC concert", 0, 10) ]);
+      const items = gildedRose.updateItems();
+      expect(items[0].quality).toEqual(0);
+    })
+
   })
 })
