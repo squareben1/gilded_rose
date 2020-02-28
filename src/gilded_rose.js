@@ -63,13 +63,10 @@ class Shop {
               }
             }
           } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality; //passes lose all quality if sellIn < 0
+            this.items[i].quality = this.items[i].quality - this.items[i].quality; //PASSES lose all quality if sellIn < 0
           }
         } else {
           this.brieQuality(i)
-          // if (this.items[i].quality < 50) {
-          //   this.items[i].quality = this.items[i].quality + 1; //Increase BRIE QUALITY +1 more (2) if SELLIN <0
-          // }
         }
       }
     }
