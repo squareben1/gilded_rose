@@ -1,5 +1,4 @@
-class SpecialItems {
-
+class  RegularItems {
   decreaseQuality(i, num, items) {
     if (items[i].quality > 0 && items[i].name != 'Sulfuras, Hand of Ragnaros') {
         if (items[i].quality - num < 0) {
@@ -7,42 +6,23 @@ class SpecialItems {
         } else {
           items[i].quality = items[i].quality - num;
         }
-    }
+      }
   };
 
   increaseQuality(i, num, items) {
     if (items[i].quality + num >= 50) {
-    items[i].quality = 50
+      items[i].quality = 50
     } else {
-    items[i].quality = items[i].quality + num
-    }
-  };
-  
-  backstagePasses(i, items) {
-    if (items[i].sellIn < 0) {
-      this.decreaseQuality(i, items[i].quality, items)
-    } else if (items[i].sellIn < 5) {
-      this.increaseQuality(i, 3, items)
-    } else if (items[i].sellIn < 10) {
-      this.increaseQuality(i, 2, items)
-    } else {
-      this.increaseQuality(i, 1, items)
-    }
-  };
-
-  agedBrie(i, items) {
-    if (items[i].sellIn < 0) {
-      this.increaseQuality(i, 2, items)
-    } else {
-      this.increaseQuality(i, 1, items)
+      items[i].quality = items[i].quality + num
     }
   };
 }
 
 class Shop { // extract regularItems, put versions of all functions in each seperated class so dont have to inject shop/this
-  constructor(items=[], specialItems=new SpecialItems){
+  constructor(items=[], specialItems=new SpecialItems, regularItems = new RegularItems){
     this.items = items;
     this.specialItems = specialItems
+    this.regularItems = regularItems
   }
 
   decreaseSellIn(i) {
@@ -51,43 +31,23 @@ class Shop { // extract regularItems, put versions of all functions in each sepe
       }
   };
 
-  decreaseQuality(i, num) {
-      if (this.items[i].quality > 0 && this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-          if (this.items[i].quality - num < 0) {
-            this.items[i].quality = 0
-          } else {
-            this.items[i].quality = this.items[i].quality - num;
-          }
-      }
-  };
+//   decreaseQuality(i, num) {
+//       if (this.items[i].quality > 0 && this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+//           if (this.items[i].quality - num < 0) {
+//             this.items[i].quality = 0
+//           } else {
+//             this.items[i].quality = this.items[i].quality - num;
+//           }
+//       }
+//   };
 
-  increaseQuality(i, num) {
-    if (this.items[i].quality + num >= 50) {
-     this.items[i].quality = 50
-    } else {
-     this.items[i].quality = this.items[i].quality + num
-    }
-};
-
-  // backstagePasses(i) {
-  //   if (this.items[i].sellIn < 0) {
-  //     this.decreaseQuality(i, this.items[i].quality)
-  //   } else if (this.items[i].sellIn < 5) {
-  //     this.increaseQuality(i, 3)
-  //   } else if (this.items[i].sellIn < 10) {
-  //     this.increaseQuality(i, 2)
-  //   } else {
-  //     this.increaseQuality(i, 1)
-  //   }
-  // };
-
-  // agedBrie(i) {
-  //   if (this.items[i].sellIn < 0) {
-  //     this.increaseQuality(i, 2)
-  //   } else {
-  //     this.increaseQuality(i, 1)
-  //   }
-  // };
+//   increaseQuality(i, num) {
+//     if (this.items[i].quality + num >= 50) {
+//      this.items[i].quality = 50
+//     } else {
+//      this.items[i].quality = this.items[i].quality + num
+//     }
+// };
 
   updateItems() {
     for (var i = 0; i < this.items.length; i++) {
@@ -97,9 +57,9 @@ class Shop { // extract regularItems, put versions of all functions in each sepe
       } else if (this.items[i].name == "Aged Brie") {
         this.specialItems.agedBrie(i, this.items)
       } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
-        this.decreaseQuality(i, 2)
+        this.regularItems.decreaseQuality(i, 2, this.items)
       } else {
-        this.decreaseQuality(i, 1)
+        this.regularItems.decreaseQuality(i, 1, this.items)
       }
     }
     return this.items;
