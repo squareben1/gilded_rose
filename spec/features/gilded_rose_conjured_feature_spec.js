@@ -492,7 +492,6 @@ Conjured Mana Cake, -27, 0
     actualResult = actualResult + "\n"
     gildedRose.updateItems()
     }
-    console.log(actualResult)
     expect(actualResult).toEqual(result)
   })
 })

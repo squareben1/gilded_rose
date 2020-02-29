@@ -7,7 +7,7 @@ class  RegularItems {
   };
 
   decreaseQuality(i, num, items) {
-    if (items[i].quality > 0 && items[i].name != 'Sulfuras, Hand of Ragnaros') {
+    if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
         if (items[i].quality - num < 0) {
           items[i].quality = 0
         } else {
@@ -17,10 +17,6 @@ class  RegularItems {
   };
 
   increaseQuality(i, num, items) {
-    if (items[i].quality + num >= 50) {
-      items[i].quality = 50
-    } else {
       items[i].quality = items[i].quality + num
-    }
   };
 }

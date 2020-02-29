@@ -455,7 +455,6 @@ Backstage passes to a TAFKAL80ETC concert, -25, 0
     actualResult = actualResult + "\n"
     gildedRose.updateItems()
     }
-    console.log(actualResult)
     expect(actualResult).toEqual(result)
   })
 })
