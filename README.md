@@ -36,7 +36,7 @@ To run the tests simply open specRunner.html in your browser. The Golden Copy is
 
 ## Installation ## 
 
-To run the program download it from this repo. You will then be able to create a new Shop object, passing in Item objects. Update the number of ```days``` and which Items you would like to include in the ```items``` array. You can then run the updateItems function as below for a readable print out of your inventory: 
+To run the program download it from this repo. You will then be able to create a new Shop object, passing in Item objects. Update the number of ```days``` and which Items you would like to include in the ```items``` array. You can then run the ```updateItems``` function as below for a readable print out of your inventory: 
 
 ``` 
     const items = [
