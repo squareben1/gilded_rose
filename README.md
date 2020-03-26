@@ -1,6 +1,6 @@
 # Gilded Rose Tech test #
 
-I have been asked by Allison, the propietor of a small, well situated hostelry, to update the inn's inventory management system so that it can account for a new type of product. The system's previous developer Leeroy had a clear penchant for if/else statements and the code required a little re-organizing before I felt comfortable adding in the new functionality required. 
+I have been asked by Allison, the propietor of a small, well situated hostelry, to update the inn's inventory management system so that it can account for a new type of product. The system's previous developer Leeroy had a clear penchant for if/else statements and the code required a little re-organizing before I felt comfortable adding in the new functionality required. To ensure the program functioned as originally intended after my refactoring I started my writing tests for each of the requirements detailed below. 
 
 ## Features ##
 
