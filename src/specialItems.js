@@ -16,15 +16,15 @@ class SpecialItems {
     }
   };
   
-  backstagePasses(i, items) {
-    if (items[i].sellIn < 0) {
-      this.decreaseQuality(i, items[i].quality, items)
-    } else if (items[i].sellIn < 5) {
-      this.increaseQuality(i, 3, items)
-    } else if (items[i].sellIn < 10) {
-      this.increaseQuality(i, 2, items)
+  backstagePasses(item) {
+    if (item.sellIn < 0) {
+      return this.decreaseQuality(item.quality, item)
+    } else if (item.sellIn < 5) {
+      return this.increaseQuality(3, item)
+    } else if (item.sellIn < 10) {
+      return this.increaseQuality(2, item)
     } else {
-      this.increaseQuality(i, 1, items)
+      return this.increaseQuality(1, item)
     }
   };
 

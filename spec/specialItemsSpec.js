@@ -41,6 +41,18 @@ describe('SpecialItems', function() {
     })
   })
 
+  describe('backstagePasses', function() {
+    it('should decrease quality to 0 if sellin < 0', function() {
+      var item = new ItemDouble("potion", -1, 49);
+      expect(specialItems.backstagePasses(item)).toEqual(0);
+    })
+
+    it('should increase quality by 3 if < 5 sellin', function() {
+      var item = new ItemDouble("potion", 4, 49);
+      expect(specialItems.backstagePasses(item)).toEqual(50);
+    })
+  })
+
 })
 
-'Sulfuras, Hand of Ragnaros'
+// 'Sulfuras, Hand of Ragnaros'
