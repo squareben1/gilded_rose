@@ -8,7 +8,7 @@ class Shop {
 
   updateItems() {
     for (var i = 0; i < this.items.length; i++) {
-      this.regularItems.decreaseSellIn(i, this.items)
+      this.regularItems.decreaseSellIn(this.items[i]) //silly berk - just changed it to this, no diea why I was doing the thing before
       if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
         this.specialItems.backstagePasses(i, this.items)
       } else if (this.items[i].name == "Aged Brie") {

@@ -1,10 +1,10 @@
 class  RegularItems {
 
-  decreaseSellIn(i, items) {
-    if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
-      items[i].sellIn = items[i].sellIn - 1;
+  decreaseSellIn(item) {
+    if (item.name != 'Sulfuras, Hand of Ragnaros') {
+      return item.sellIn = item.sellIn - 1;
     }
-  };
+  }; //silly berk - just changed it to this, no diea why I was doing the thing before
 
   decreaseQuality(i, num, items) {
     if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
