@@ -22,6 +22,25 @@ describe('SpecialItems', function() {
       expect(specialItems.decreaseQuality(2, item)).toEqual(0);
     })
   })
+
+
+  describe('increaseQuaity', function() {
+    it('should increase quality by 1 when passed 1', function() {
+      var item = new ItemDouble("potion", 1, 1);
+      expect(specialItems.increaseQuality(1, item)).toEqual(2);
+    })
+
+    it('should increase quality by 2 when passed 2', function() {
+      var item = new ItemDouble("potion", 1, 1);
+      expect(specialItems.increaseQuality(2, item)).toEqual(3);
+    })
+
+    it('should increase quality to no more than 50', function() {
+      var item = new ItemDouble("potion", 1, 49);
+      expect(specialItems.increaseQuality(2, item)).toEqual(50);
+    })
+  })
+
 })
 
 'Sulfuras, Hand of Ragnaros'
