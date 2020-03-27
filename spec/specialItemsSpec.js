@@ -51,6 +51,16 @@ describe('SpecialItems', function() {
       var item = new ItemDouble("potion", 4, 49);
       expect(specialItems.backstagePasses(item)).toEqual(50);
     })
+
+    it('should increase quality by 2 if < 10 sellin', function() {
+      var item = new ItemDouble("potion", 9, 10);
+      expect(specialItems.backstagePasses(item)).toEqual(12);
+    })
+
+    it('should increase quality by 1 if > 10 sellin', function() {
+      var item = new ItemDouble("potion", 11, 10);
+      expect(specialItems.backstagePasses(item)).toEqual(11);
+    })
   })
 
 })
