@@ -76,5 +76,3 @@ describe('SpecialItems', function() {
   })
 
 })
-
-// 'Sulfuras, Hand of Ragnaros'
