@@ -1,8 +1,29 @@
 # Gilded Rose Tech test #
 
-## Currently undergoing major refactor as noticed unnecessary and confusing dependencies! 
-
 I have been asked by Allison, the propietor of a small, well situated hostelry, to update the inn's inventory management system so that it can account for a new type of product. The system's previous developer Leeroy had a clear penchant for if/else statements and the code required a little re-organizing before I felt comfortable adding in the new functionality required. To ensure the program functioned as originally intended after my refactoring I started my writing tests for each of the requirements detailed below. 
+
+## EDIT: Key Learns from revisiting this project on 27/03/20
+
+I looked over this project again while putting my portfolio and CV together. While doing this I found that my code on this kata had major flaws - for some reason I was passing the 'i' iterator down from Shop>updateItems into all other functions, rather than just passing the individual item resulting from the iteration. This meant I ended up with functions that looked like this:
+
+```   decreaseQuality(i, num, items) {
+    if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
+        if (items[i].quality - num < 0) {
+          items[i].quality = 0
+        } else {
+          items[i].quality = items[i].quality - num;
+        }
+      }
+  };
+  ``` 
+
+  I spent an hour or so today fixing this. In doing so I realised I needed to write proper unit tests for regularItems and specialItems. I did this and used the tests to drive the refactor. 
+
+  I left the existing tests but renamed the file to shopFeatureSpec and moved it into features as I feel this more accurately describes what it does. This kata has unit tests, feature tests and integration tests (those based on the golden copy). 
+
+  In the new unit tests I test for function rather than state - a concept I recall a coach explaining to me at the time and which I I more fully understand after this revisit. 
+
+  Revisiting this exercise has been extremely valuable - I now feel I understand several concepts more fully. I also see the value in revisiting your code a while after 'finishing' it. I think I was so wrapped up in just making it work originally that I failed to step back and ask myself if that way was best. Clearly it wasn't but thats OK! This revisit has been at least as valuable as actually completing the kata in the first place. 
 
 ## Features ##
 
