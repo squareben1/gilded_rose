@@ -53,13 +53,25 @@ describe('SpecialItems', function() {
     })
 
     it('should increase quality by 2 if < 10 sellin', function() {
-      var item = new ItemDouble("potion", 9, 10);
+      var item = new ItemDouble("item", 9, 10);
       expect(specialItems.backstagePasses(item)).toEqual(12);
     })
 
     it('should increase quality by 1 if > 10 sellin', function() {
-      var item = new ItemDouble("potion", 11, 10);
+      var item = new ItemDouble("item", 11, 10);
       expect(specialItems.backstagePasses(item)).toEqual(11);
+    })
+  })
+
+  describe('agedBrie', function() {
+    it('should increase quality by 2 if sellin < 0', function() {
+      var item = new ItemDouble("potion", -1, 10);
+      expect(specialItems.agedBrie(item)).toEqual(12)
+    })
+
+    it('should increase quality by 1 if sellin > 0', function() {
+      var item = new ItemDouble("potion", 10, 10);
+      expect(specialItems.agedBrie(item)).toEqual(11)
     })
   })
 

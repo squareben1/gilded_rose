@@ -28,11 +28,11 @@ class SpecialItems {
     }
   };
 
-  agedBrie(i, items) {
-    if (items[i].sellIn < 0) {
-      this.increaseQuality(i, 2, items)
+  agedBrie(item) {
+    if (item.sellIn < 0) {
+      return this.increaseQuality(2, item)
     } else {
-      this.increaseQuality(i, 1, items)
+      return this.increaseQuality(1, item)
     }
   };
 }
