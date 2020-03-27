@@ -6,16 +6,22 @@ describe('SpecialItems', function() {
   }
   const specialItems = new SpecialItems
 
-  describe('decreaseSellIn', function() {
-    it('should decrease sellIn by 1', function() {
-      const item = new ItemDouble("potion", 1, 0);
-      expect(regularItems.decreaseSellIn(item)).toEqual(0);
+  describe('decreaseQuality', function() {
+    it('should decrease quality of item by 1 when passed 1', function() {
+      var item = new ItemDouble("potion", 1, 10);
+      expect(specialItems.decreaseQuality(1, item)).toEqual(9);
     })
 
-    it('should not decrease sellIn if item == Sulfuras', function() {
-      const item = new ItemDouble("Sulfuras, Hand of Ragnaros", 1, 0);
-      expect(regularItems.decreaseSellIn(item)).toEqual(1);
+    it('should decrease quality of item by 2 when passed 2', function() {
+      var item = new ItemDouble("potion", 1, 10);
+      expect(specialItems.decreaseQuality(2, item)).toEqual(8);
     })
 
+    it('should decrease quality of to ZERO if result would be negative', function() {
+      var item = new ItemDouble("potion", -1, 1);
+      expect(specialItems.decreaseQuality(2, item)).toEqual(0);
+    })
   })
 })
+
+'Sulfuras, Hand of Ragnaros'

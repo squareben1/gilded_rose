@@ -8,7 +8,7 @@ class  RegularItems {
     }
   };
 
-  decreaseQuality(num, item) { // move conjured check in here?
+  decreaseQuality(num, item) {
     if (item.name != 'Sulfuras, Hand of Ragnaros') {
       if (item.quality - num < 0) {
           return item.quality = 0

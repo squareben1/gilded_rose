@@ -33,7 +33,5 @@ describe('RegularItems', function() {
       var item = new ItemDouble("potion", -1, 1);
       expect(regularItems.decreaseQuality(2, item)).toEqual(0);
     })
-
   })
-
 })

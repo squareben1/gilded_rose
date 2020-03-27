@@ -1,10 +1,10 @@
 class SpecialItems {
 
-  decreaseQuality(i, num, items) {
-    if (items[i].quality - num < 0) {
-      items[i].quality = 0
+  decreaseQuality(num, item) {
+    if (item.quality - num < 0) {
+      return item.quality = 0
     } else {
-      items[i].quality = items[i].quality - num;
+      return item.quality = item.quality - num;
     }
   };
 
