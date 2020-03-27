@@ -14,9 +14,9 @@ class Shop {
       } else if (this.items[i].name == "Aged Brie") {
         this.specialItems.agedBrie(i, this.items)
       } else if (this.items[i].sellIn < 0 || this.items[0].name.includes("Conjured")) {
-        this.regularItems.decreaseQuality(i, 2, this.items)
+        this.regularItems.decreaseQuality(2, this.items[i])
       } else {
-        this.regularItems.decreaseQuality(i, 1, this.items)
+        this.regularItems.decreaseQuality(1, this.items[i])
       }
     }
     return this.items;
